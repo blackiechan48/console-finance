@@ -86,3 +86,13 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+var totalMonths = finances.length
+var total=0
+// *Total number of months included
+
+console.log(`Total Months: ${totalMonths}`)
+// used finances.length to count total number of arrays and consol loged it to show on the html page.
+
+// *The net total amount of profil and loss
+
