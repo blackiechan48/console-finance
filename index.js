@@ -1,4 +1,4 @@
-var finances = [
+var finances = [ 
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -87,12 +87,44 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-var totalMonths = finances.length
-var total=0
-// *Total number of months included
+var total = 0;
+var profitLoss = 0;
+var previousMonthAmount = 0;
+var netMonthlyTotal = 0;
+var greatestIncrease = ["", 0];
+var greatestDecrease =["", 999999999999999];
 
-console.log(`Total Months: ${totalMonths}`)
-// used finances.length to count total number of arrays and consol loged it to show on the html page.
+//  Total number of months
+var totalMonths = finances.length;
+console.log(`total months: ${totalMonths}`);
 
-// *The net total amount of profil and loss
+// wrote code for for-loop to check through the data
+for (var i=0; i < totalMonths; i++) {
+  total += finances[i][1];
+
+  // if statetment used to workout the monthly profit and loss 
+ if(i>0) {profitLoss = finances[i][1] - previousMonthAmount};
+ previousMonthAmount =  finances[i][1]
+ netMonthlyTotal += profitLoss;
+// if statement to check if the month is greater than the previous month
+
+if(profitLoss >greatestIncrease[1]){
+  greatestIncrease = [finances[i][0], profitLoss]
+}
+if(profitLoss <greatestDecrease[1]){
+  greatestDecrease = [finances[i][0], profitLoss]
+}
+};
+
+
+
+// consol log to display functions 
+console.log(`
+  Total months: ${totalMonths}
+  Average Change: ${netMonthlyTotal /(totalMonths -1)}
+  Greatest Increase in Profits/Losses: ${greatestIncrease[0]} ($${greatestIncrease[1]})
+  Greatest Decrease in Profits/Losses: ${greatestDecrease[0]} ($${greatestDecrease[1]})
+`)
+
+// received help from teaching assistant and i referenced the zoom call alot to arrive at a solution 
 
